@@ -14,8 +14,10 @@ app.use(express.urlencoded({extended:true}));
 
 // import routes
 import userRoutes from './routes/userRoutes.js';
+import productRoutes from './routes/productRoutes.js'
 
 app.use('/api/user',userRoutes);
+app.use('/api/product',productRoutes);
 
 
 app.get('/',(req,res)=>{
