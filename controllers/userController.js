@@ -1,4 +1,5 @@
 import User from "../models/User.js";
+import genrateToken from "../utils/genrateToken.js";
 
 export const register = async(req,res)=>{
     try{
@@ -34,7 +35,8 @@ export const login = async(req,res)=>{
             res.status(401).json({message:"User not found.!"});
         }
 
-        res.status(200).json({message:"User login successfully."});
+        const token = genrateToken(user);
+        res.status(200).json({message:"User login successfully.",token});
     }
     catch(err){
         res.status(501).json({message:"Internal server error.!"})
